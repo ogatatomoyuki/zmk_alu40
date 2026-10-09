@@ -1,9 +1,6 @@
 ---
+# GUI編集(ZMK Studio)は使わない方針のため studio ビルドは行わない（2026-10-09）
 include:
   - board: alu40
-  - board: alu40
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: alu40-studio-zmk
   - board: alu40
     shield: settings_reset
