@@ -161,6 +161,31 @@
             bindings = <&kp LC(B)>;
             layers = <BASE>;
         };
+
+        // --- ブートローダー / リセット（底面リセットボタンの代替・艦隊共通設計） ---
+        // 「上段最外列 ＋ 文字下段(row2)の最内列」は共通で、**親指だけずらして**切替。
+        //   親指内側          → &bootloader（焼き用・リセット2回押し相当）
+        //   親指内側から2番目 → &sys_reset （再起動・1回押し相当）
+        // ★本機は**一体型(単一MCU)なので左側だけ**で足りる（分割機は片側USB接続で焼く
+        //   ため左右それぞれに必要だが、一体型はその制約がない）。
+        // ★FUN層にも &bootloader があるが、こちらはレイヤー不要で押せる。
+        // ★layers 未指定＝全レイヤーで有効。3キーなので timeout は緩める。
+
+        // bootloader — 上段最外(0) + row2最内(28) + NAV(38=親指内側)
+        combo_boot {
+            timeout-ms = <100>;
+            require-prior-idle-ms = <250>;
+            key-positions = <0 28 38>;
+            bindings = <&bootloader>;
+        };
+
+        // sys_reset — 上段最外(0) + row2最内(28) + SPC(39=内側から2番目)
+        combo_reset {
+            timeout-ms = <100>;
+            require-prior-idle-ms = <250>;
+            key-positions = <0 28 39>;
+            bindings = <&sys_reset>;
+        };
     };
 
     // --- Tri-Layer (NAV + SYM = FUN) ---
