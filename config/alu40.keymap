@@ -265,7 +265,7 @@
         //     4番目=BT_SEL 3 → Daylight DC-1
         //     5番目=BT_SEL 4 → Mac mini
         //   ★ペアリング実体は各キーボードが個別に保持する。番号を揃えるには
-        //     CLR_ALL で全消去 → 1番目を選んで iPad mini とペアリング → 2番目… と
+        //     各プロファイルを選んで CLR で1つずつ消去 → 1番目を選んで iPad mini とペアリング → 2番目… と
         //     **手作業で順に入れ直す**必要がある（ファームでは自動化できない）。
         //   ★RGB系5キーは**削除**（基本使わないため全機で廃止・左下段は拡張枠）
         //   ★bootloader も削除（コンボ Q+B+親指内側 で叩けるため）
@@ -274,7 +274,7 @@
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &none  &none  &kp F1   &kp F2   &kp F3   &kp F4   &kp F5
 &bt BT_CLR    &out OUT_TOG   &kp K_MUTE    &kp K_VOL_DN  &kp K_VOL_UP   &none  &none  &kp F6   &kp F7   &kp F8   &kp F9   &kp F10
-&bt BT_CLR_ALL &none         &none         &none         &none          &none  &none  &kp F11  &kp F12  &kp F13  &kp F14  &kp F15
+&none          &none         &none         &none         &none          &none  &none  &kp F11  &kp F12  &kp F13  &kp F14  &kp F15
 &none         &none          &trans        &trans        &trans         &none  &none  &trans   &trans   &none    &none    &none
             >;
             sensor-bindings = <&inc_dec_kp LG(MINUS) LG(EQUAL)>;  // ノブ: ズーム
